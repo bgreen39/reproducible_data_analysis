@@ -1,0 +1,13 @@
+Package: BriannaFinalPackage
+Type: Package
+Title: This package will calculate Gibbs free energy of a reaction
+Version: 0.1.0
+Author: Brianna Green
+Maintainer: Brianna Green <bgreen39@vols.utk.edu>
+Description: In this package there are multiple variables that you will need to input in order to calculate the Gibbs Free energy of formation.
+        This will be a good package to use for geochemists who need gibbs free energy of formation data and include it as part of their data analysis.
+        It will also be good for students trying to check their work to see if their calculations for Gibbs free energy of the reaction is correct. 
+License: UTK
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1.9000
