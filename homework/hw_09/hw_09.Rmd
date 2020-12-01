@@ -1,0 +1,84 @@
+---
+title: "Homework 9 : Functions and Programming"
+author: "Brianna Green"
+date: "11/24/2020"
+output: github_document
+---
+# 1. Write a function that takes two vectors of the same length and returns the number of positions that have an NA in both vectors.
+``` {r}
+x <- c(3, 6, 9, 12)
+variance.num <-function(x, na.rm=TRUE){
+  n <-length(x)
+  m <-mean(x, na.rm=TRUE)
+  sq_err <-(x-m)^2
+  sum(sq_err)/(n-1)
+}
+
+print(variance.num(x))
+#Numeric vector=x, n=length function, m=mean and use equation from exercise
+```
+# 2. Write both\_na(), a function that takes two vectors of the same length and returns the number of positions that have an NA in both vectors
+```{r, message=FALSE}
+skew.num <-function(x, na.rm=FALSE){
+  v <-variance.num(x, na.rm=na.rm)
+  n <-length(x)
+  m <-mean(x, na.rm=na.rm)
+  (sum((x-m)^3/(n-2))/v^(3/2))
+}
+
+print(skew.num(x))
+```
+# 3. Write a function to create a specific kind of plot, with useful labels, etc., that can take a data frame as an argument.
+```{r, message=FALSE}
+data_plot <-function(x,y){
+  x <-c(2,3,6,7)
+  y <-c(1,2,3,4)
+  p <-ggplot(data, aes_string(x,y))+
+    geom_point()
+    xlab("x data")
+    ylab("y data")
+}
+```
+# 4. Write a function that takes one argument and does the following
+## If argument is a numeric vector, multiples every number in the vector by 2. If argument is a character vector, sorts the vector into alphabetical order. If argument is anything else, issues an information warning and returns the argument unchanged.
+
+```{r, message=FALSE}
+jack_of_trades <-function(arg) {
+  go <-if(is.numeric(arg)) {
+    arg*2
+  } else if(is.character(arg)) {
+  sort(arg)
+  } else if(!is.numeric(arg)) if(!is.character(arg)) {
+  warning("Entry needs to be either a numeric vector or character vector")
+  }
+  go
+}
+```
+# 5. Write a function that tries to calculate the mean of a vector using mean ().
+## This line calculates the mean of the vector 'x'.
+```{r, message=FALSE}
+mean(is.na(x))
+```
+## This line calculates vector 'x' divided by the sum of the vector 'x'.
+```{r, message=FALSE}
+x / sum(x, na.rm = TRUE)
+```
+# 6. Use system.time() to compare how long it takes to add two, 1-million-element random vectors and store the result in a third vector.
+## You have to download library(microbenchmark) in order to perform these lines of code.
+```{r, message=FALSE}
+system.time(for (i in 1:1000000) {i+i})
+```
+## Calculates the elapsed time for the system to calculate the function for time that has been pre-allocated.
+```{r, message=FALSE}
+pre_allo <-numeric(0)
+  system.time(pre_allo <-c(for(i in 1:1000000) {i+i}))
+```
+## Calculates the elapsed time for the system to calculate the function for time that has NOT been pre-allocated.
+```{r, message=FALSE}
+  system.time(not_pre_allo <-for(i in 1:1000000) {i+i})
+```
+## In these 2 lines of code I created 2 vectors with a million random elements and used the "sample" function that says to r 'randomly pick 1000000 numbers from the integers 1:1000000'.
+```{r, message=FALSE}
+million_1 <-sample(x=1000000, 1000000)
+million_2 <-sample(x=1000000, 1000000)
+```
