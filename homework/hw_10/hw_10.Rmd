@@ -7,6 +7,7 @@ output: github_document
 
 # Linear Model
 Using the diamonds dataset, create a linear model of price as a function of the weight of the diamond (carat). According to that model, what price would you expect for a 1-carat diamond?
+
 ## First step is to load tidyverse so r will know which data frame you are working in. 
 ```{r, message=FALSE}
 library(tidyverse)
