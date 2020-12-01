@@ -1,0 +1,42 @@
+---
+title: "Homework 6 : Good vs. Bad Plot"
+author: "Brianna Green"
+date: "9/30/2020"
+output: github_document
+---
+## Good Plot
+Description of the plot:
+The "good" plot shown below shows a line plot the CO2 levels over the past 10,000 years from ice core data from several different locations. The data was used from NOAA ice core database.  
+
+~What is the plot trying to communicate?
+The plot is trying to communicate that CO2 levels in the atmosphere have increased over time. 
+
+~Why do you think this plot is successful?
+I think this line plot is successful because the data is represented accurately and in a way that is relatively accessible to those looking at it. 
+
+~Can you think of anything that could make the plot more successful? If not, what is a common plotting error that this plot avoided?
+I think this plot could be improved by using thicker lines in order to make the lines more visible to those that may be colorblind. 
+
+```{r}
+#![Example of Good plot](~/Documents/classes/MICR490/reproducible_data_analysis/homework/hw_06/good_plot_1.jpg)
+```
+
+## Bad plot
+Describe the plot as you did with the “good” plot.
+The "bad" plot shows a bar graph of COVID-19 cases for most impacted counties with the state of Georgia. 
+
+~What is the plot trying to communicate?
+The plot is trying to communicate that the number of COVID-19 cases in Georgia are declining. 
+
+~In what way does the plot obscure the meaning of the data, or mislead the reader?
+The plot obscures the meaning of the data by 1) not keeping up with the order of counties for each day. 2) Putting the dates on the x-axis in random order.
+
+~What could be done to make the plot easier to read, or more honest?
+If the dates on the x-axis were in chronological order then it would clearly explain what was happening over time. The bar ,representing each county, need to be in the same order for each day throughout the graph to be able to see what was happening within each county compared to others and overall to determine the trend of COVID-19 cases within the counties of Georgia.
+
+```{r}
+#![Example of Badplot.] (~/Documents/classes/MICR490/reproducible_data_analysis/homework/hw_06/bad_plot_1.jpg)
+```
+
+
+
