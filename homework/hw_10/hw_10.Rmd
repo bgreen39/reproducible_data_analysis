@@ -1,0 +1,101 @@
+---
+title: "hw_10"
+author: "Brianna Green"
+date: "11/10/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##Linear Model
+Using the diamonds dataset, create a linear model of price as a function of the weight of the diamond (carat). According to that model, what price would you expect for a 1-carat diamond?
+
+```{r}
+mod <-lm(price ~carat + color,data=diamonds)
+summary(mod)
+mod_unordered <-lm(price ~carat+factor(color,ordered=FALSE),
+                  data=diamonds)
+summary(mod_unordered)
+glimpse(diamonds)
+summary(nod)
+diamonds_nod <-lm(price ~carat)
+mod_char <-lm(price ~carat + factor(color, ordered = FALSE),
+              data=diamonds)
+```
+
+Now create a linear model of price as a function of carat and color.
+What difference does it make if you convert color to a character vector before you make the model? Note that this is probably what you want to do in general, unless you really know what you’re doing.
+
+```{r}
+linmod <-lm(price ~carat + color,data=diamonds)
+char_linmod <-lm(price ~carat + as.character(color),data=diamonds)
+```
+
+Make some plots of the raw data, and of the model fits, to make an argument as to which model is more useful.
+Bonus: Should the data have been pre-processed before making these models?
+```{r}
+linmod <-lm(price ~carat + color,data=diamonds)
+char_linmod <-lm(price ~carat + as.character(color),data=diamonds)
+
+#ggplot(diamonds,aes(carat, price))+
+#  geom_point()
+
+#basemod <-lm(price ~carat,data=diamonds)
+#plot(basemod)
+```
+
+
+#Objects and Methods
+```{r}
+mtcars_copy <- mtcars
+attr(mtcars_copy, "author") <-Bri
+attr(mtcars_copy, "crazy_data_frame") <-diamonds
+attr(mtcars_copy, "vector") <=letters
+
+attr(mtcars_copy, "author")
+
+attr(mtcars_copy, "class") <-"my_new_class"
+
+#write construction function for the "silly_df" class
+new_silly_df <-function(x, why_sily= "Because I a giant goofball"){
+  if(!is.data.frame(x)) {
+    stop("why_silly must be a character vector of length 1")
+  }
+  if(!(is character(why_silly) &length(why_silly ==1))){
+    stop("why_silly must be a character vector of length 1")
+  }
+  
+  class(x) <-c("silly_df", "data_frame")
+  attr(x,"why_silly") <-why_silly
+  x
+}
+
+#write a summary method for silly_df
+summary.silly_df <-function(x) {
+  why_silly <- attr(x,"why_silly")
+  print(paste0("The resason I'm silly is", why_silly))
+  print(summary.data.frame(x))
+  summart.data.frame(x)
+}
+
+#Write a validator method
+validate_silly_df <-function(x) {
+  if(is.null(atttr(x, "why_silly"))) {
+    stop("why_silly attribute is missing")
+  }
+  
+  # check that it is a valid data frame, too.
+}
+```
+
+
+
+```{r}
+mod <-lm(price ~carat + color,data=diamonds)
+summary(mod)
+mod_unordered <-lm(price ~carat+factor(color,ordered=FALSE),
+                   data=diamonds)
+summary(mod_unordered)
+```
