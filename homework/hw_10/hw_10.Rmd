@@ -2,15 +2,15 @@
 title: "hw_10"
 author: "Brianna Green"
 date: "11/10/2020"
-output: html_document
+output: github_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-##Linear Model
+# Linear Model
 Using the diamonds dataset, create a linear model of price as a function of the weight of the diamond (carat). According to that model, what price would you expect for a 1-carat diamond?
+
+```{r, message=FALSE}
+library(tidyverse)
+```
 
 ```{r}
 mod <-lm(price ~carat + color,data=diamonds)
@@ -19,8 +19,8 @@ mod_unordered <-lm(price ~carat+factor(color,ordered=FALSE),
                   data=diamonds)
 summary(mod_unordered)
 glimpse(diamonds)
-summary(nod)
-diamonds_nod <-lm(price ~carat)
+summary(mod)
+diamonds_mod <-lm(price ~carat, data=diamonds)
 mod_char <-lm(price ~carat + factor(color, ordered = FALSE),
               data=diamonds)
 ```
@@ -47,10 +47,10 @@ char_linmod <-lm(price ~carat + as.character(color),data=diamonds)
 ```
 
 
-#Objects and Methods
+# Objects and Methods
 ```{r}
 mtcars_copy <- mtcars
-attr(mtcars_copy, "author") <-Bri
+attr(mtcars_copy, "author") <-"Bri"
 attr(mtcars_copy, "crazy_data_frame") <-diamonds
 attr(mtcars_copy, "vector") <=letters
 
@@ -63,7 +63,7 @@ new_silly_df <-function(x, why_sily= "Because I a giant goofball"){
   if(!is.data.frame(x)) {
     stop("why_silly must be a character vector of length 1")
   }
-  if(!(is character(why_silly) &length(why_silly ==1))){
+  if(!(is.character(why_silly) & length(why_silly == 1))){
     stop("why_silly must be a character vector of length 1")
   }
   
