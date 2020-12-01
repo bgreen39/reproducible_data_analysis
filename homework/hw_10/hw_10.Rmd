@@ -1,5 +1,5 @@
 ---
-title: "hw_10"
+title: "Homework 10 : Linear Models & Objects and Methods"
 author: "Brianna Green"
 date: "11/10/2020"
 output: github_document
@@ -7,34 +7,38 @@ output: github_document
 
 # Linear Model
 Using the diamonds dataset, create a linear model of price as a function of the weight of the diamond (carat). According to that model, what price would you expect for a 1-carat diamond?
-
+## First step is to load tidyverse so r will know which data frame you are working in. 
 ```{r, message=FALSE}
 library(tidyverse)
 ```
-
-```{r}
+## This line of code specifies the data frame and what I chose to call it "mod". 
+```{r, message=FALSE}
 mod <-lm(price ~carat + color,data=diamonds)
 summary(mod)
+```
+## Using the "unordered" command organizes characters alphabetically before printing.
+```{r, message=FALSE}
 mod_unordered <-lm(price ~carat+factor(color,ordered=FALSE),
                   data=diamonds)
 summary(mod_unordered)
+```
+## The "glimpse" function gives you a glimpse of your data, showing the columns running down the page and the data running across the page. 
+```{r, message=FALSE}
 glimpse(diamonds)
 summary(mod)
+```
+## Here I referenced the diamonds data in the "mod" data frame. 
+```{r, message=FALSE}
 diamonds_mod <-lm(price ~carat, data=diamonds)
 mod_char <-lm(price ~carat + factor(color, ordered = FALSE),
               data=diamonds)
 ```
-
-Now create a linear model of price as a function of carat and color.
-What difference does it make if you convert color to a character vector before you make the model? Note that this is probably what you want to do in general, unless you really know what you’re doing.
-
+## Now I created a linear model of price as a function of carat and color.If you convert 'color' to a character vector before you make the model then it r will assume it is included in the data frame and incorporate it as part of your data. 
 ```{r}
 linmod <-lm(price ~carat + color,data=diamonds)
 char_linmod <-lm(price ~carat + as.character(color),data=diamonds)
 ```
-
-Make some plots of the raw data, and of the model fits, to make an argument as to which model is more useful.
-Bonus: Should the data have been pre-processed before making these models?
+## Below is code making plots of the raw data, and of the model fits, to make an argument as to which model is more useful. Although the data doesn't need to be pre-processed before making these models it's better practice to pre-process the model so that you can determine which type of plot best represents the data you have.
 ```{r}
 linmod <-lm(price ~carat + color,data=diamonds)
 char_linmod <-lm(price ~carat + as.character(color),data=diamonds)
@@ -45,10 +49,8 @@ char_linmod <-lm(price ~carat + as.character(color),data=diamonds)
 #basemod <-lm(price ~carat,data=diamonds)
 #plot(basemod)
 ```
-
-
 # Objects and Methods
-```{r}
+```{r, message=FALSE}
 mtcars_copy <- mtcars
 attr(mtcars_copy, "author") <-"Bri"
 attr(mtcars_copy, "crazy_data_frame") <-diamonds
@@ -57,8 +59,9 @@ attr(mtcars_copy, "vector") <=letters
 attr(mtcars_copy, "author")
 
 attr(mtcars_copy, "class") <-"my_new_class"
-
-#write construction function for the "silly_df" class
+```
+# The code below is a construction function for the "silly_df" class. 
+```{r, message=FALSE}
 new_silly_df <-function(x, why_sily= "Because I a giant goofball"){
   if(!is.data.frame(x)) {
     stop("why_silly must be a character vector of length 1")
@@ -71,28 +74,27 @@ new_silly_df <-function(x, why_sily= "Because I a giant goofball"){
   attr(x,"why_silly") <-why_silly
   x
 }
-
-#write a summary method for silly_df
+```
+# This is a summary method for 'silly_df'
+```{r, message=FALSE}
 summary.silly_df <-function(x) {
   why_silly <- attr(x,"why_silly")
   print(paste0("The resason I'm silly is", why_silly))
   print(summary.data.frame(x))
   summart.data.frame(x)
 }
-
-#Write a validator method
+```
+# This is a validator method. (Be sure to check that it's a valid function!)
+```{r, message=FALSE}
 validate_silly_df <-function(x) {
   if(is.null(atttr(x, "why_silly"))) {
     stop("why_silly attribute is missing")
   }
-  
-  # check that it is a valid data frame, too.
+
 }
 ```
-
-
-
-```{r}
+# This code shows the pre-processed data again. 
+```{r, message=FALSE}
 mod <-lm(price ~carat + color,data=diamonds)
 summary(mod)
 mod_unordered <-lm(price ~carat+factor(color,ordered=FALSE),
