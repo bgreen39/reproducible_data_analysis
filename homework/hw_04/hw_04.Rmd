@@ -1,0 +1,37 @@
+---
+title: 'Homework 4 : Creating Different Types of ggplots'
+author: "Brianna Green"
+date: "09/07/2020"
+output: html_document
+---
+Here we load the packages that this script will use. The dataset of baby "Chris" names will be used to create different plots!
+```{r}
+library(tidyverse)
+#chris <- read_csv("chris_names_wide.csv") 
+```
+
+Next, we convert to tidy (long) format
+```{r}
+#d_long <- pivot_longer(data=chris, cols = -year, names_to = "sex", values_to = "n")
+```
+
+Below shows how to get line, "smooth" line, and box plots. Title format: ("y-axis" vs. "x-axis").
+"Number of Babies vs. year" (Line Plot)
+```{r}
+#ggplot(data=chris) +
+#  geom_point(mapping = aes(x=year, y=male), color = "orange") +
+#  geom_point(mapping = aes(x=year, y=female), color = "purple")
+```
+
+"Number of Babies vs. year" ('smooth' Line Plot)
+```{r}
+#ggplot(data=chris) +
+#  geom_smooth(mapping = aes(x=year, y=male), color = "orange") +
+#  geom_smooth(mapping = aes(x=year, y=female), color = "purple")
+```
+
+"Number of people named 'Chris' vs. sex" (Box Plot)
+```{r}
+#ggplot(data = d_long, aes(x=sex, y=n)) +
+# geom_boxplot()
+```
