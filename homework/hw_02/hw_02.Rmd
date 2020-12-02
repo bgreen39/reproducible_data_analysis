@@ -1,0 +1,10 @@
+---
+title: 'Homework 2'
+author: "Brianna Green"
+date: "08/31/2020"
+output: github_document
+---
+This is the solution to hw 2 to calculate '2+2' and the sum will appear in the terminal
+```{r}
+2+2
+```
