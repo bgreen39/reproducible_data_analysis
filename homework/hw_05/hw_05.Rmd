@@ -1,0 +1,42 @@
+---
+title: "Homework 5 : Using R Markdown"
+author: "Brianna Green"
+date: "09/15/2020"
+output: github_document
+---
+1. Seeing the documentation of flights
+```{r}
+?nycflights13::flights
+```
+
+2. Using the glimpse() function we can get a general sense of the "flights" data frame. There are 336,776 rows and 19 columns.
+```{r}
+#glimpse(flights)
+```
+
+3. Using the filter() function we create a data frame of just the flights that departed 2 hours late or more and we see that 120,382 out of 336,776 flights were delayed by 2 hours.
+```{r}
+#late_flights <-filter(flights, dep_delay >= 2)
+```
+
+4.Using mutate() and paste0 we create a column that contains the combined airline and flight number. 
+
+ This line combines flight and airline number.
+```{r}
+#flights_combined_airline_and_number <-mutate(late_flights, combined.air.flight.number = paste0(carrier, flight)) 
+```
+Charts in view to check correct mutation.
+```{r}
+#glimpse(flights_combined_airline_and_number, !(is.na(tailnum)))
+```
+Removes flights without a plane tail number.
+```{r}
+#cleaned_flights <- filter(flights_combined_airline_and_number, tailnum, carrier) 
+```
+
+5.Use group() to groups certain flights together. 
+```{r}
+#cleaned_grouped_flights <-group_by(cleaned_flights, tailnum, carrier)
+#glimpse(cleaned_grouped_flights)
+#number_of_flights <- summarise(cleaned_grouped_flights, number.of.flights = n())
+```
